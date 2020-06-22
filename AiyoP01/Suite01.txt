@@ -1,0 +1,19 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Test Cases ***
+TC00
+    Open Browser    http://yourhost.com    chrome
+    Wait And Input    id=THE_ID    VALUE
+    Wait And Click    xpath=THE_XPATH
+
+*** Keywords ***
+Wait And Input
+    [Arguments]    ${locator}    ${text}
+    Wait Until Element Is Visible    ${locator}
+    Input Text    ${locator}    ${text}
+
+Wait And Click
+    [Arguments]    ${locator}
+    Wait Until Element Is Visible    ${locator}
+    Click Element    ${locator}
